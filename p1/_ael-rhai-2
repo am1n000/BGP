@@ -1,0 +1,7 @@
+FROM frrouting/frr
+
+RUN echo "service integrated-vtysh-config" > /etc/frr/vtysh.conf
+
+RUN sed -i -e 's/^bgpd=.*/bgpd=yes/' \
+	   -e 's/^ospfd=.*/ospfd=yes/' \
+	   -e 's/^isisd=.*/isisd=yes/' /etc/frr/daemons
